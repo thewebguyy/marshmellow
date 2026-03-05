@@ -44,40 +44,72 @@ const FEATURES = [
 ];
 
 export function Features() {
+    const featuredFeatures = FEATURES.slice(0, 2);
+    const regularFeatures = FEATURES.slice(2);
+
     return (
-        <section id="features" className="py-32 px-6 bg-white">
+        <section id="features" className="py-48 px-6 bg-white section-bleed-ivory-white">
             <div className="max-w-7xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-24"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="mb-32 max-w-2xl"
                 >
-                    <h2 className="text-3xl md:text-5xl font-display font-medium text-brand-charcoal mb-4">
+                    <span className="text-xs uppercase tracking-[0.4em] font-semibold text-brand-rose/60 block mb-6">The Platform</span>
+                    <h2 className="text-5xl md:text-7xl font-display font-medium text-brand-charcoal mb-8 leading-tight">
                         Six things you won&apos;t find anywhere else.
                     </h2>
-                    <p className="text-xl md:text-2xl font-sans font-light text-brand-gray">
-                        Because no one else built them.
+                    <p className="text-xl md:text-2xl font-sans font-light text-brand-gray leading-relaxed">
+                        Features engineered for the reality of clinical life. Not for engagement metrics.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-                    {FEATURES.map((feature, index) => (
+                {/* Asymmetric Editorial Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
+                    {featuredFeatures.map((feature, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="group p-8 rounded-3xl border border-brand-charcoal/5 hover:border-brand-rose/20 hover:bg-brand-rose/[0.01] transition-all duration-500"
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: index * 0.2 }}
+                            className="group relative p-12 md:p-16 rounded-[3rem] border border-brand-charcoal/5 hover:border-brand-rose/30 hover:bg-brand-rose/[0.02] transition-all duration-700 overflow-hidden col-span-1"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-rose/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="relative z-10">
+                                <div className="w-16 h-16 rounded-2xl bg-brand-charcoal/5 flex items-center justify-center text-brand-charcoal group-hover:bg-brand-rose/20 group-hover:text-brand-rose transition-all duration-500 mb-12 group-hover:scale-110">
+                                    <feature.icon size={32} strokeWidth={1} />
+                                </div>
+                                <h3 className="text-3xl md:text-4xl font-display font-medium text-brand-charcoal mb-8">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-xl font-sans font-light text-brand-gray leading-relaxed max-w-xl">
+                                    {feature.content}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+                    {regularFeatures.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
+                            className="group p-10 md:p-12 rounded-[2.5rem] border border-brand-charcoal/5 hover:border-brand-rose/20 hover:bg-brand-rose/[0.015] transition-all duration-500"
                         >
                             <div className="w-12 h-12 rounded-xl bg-brand-charcoal/5 flex items-center justify-center text-brand-charcoal group-hover:bg-brand-rose/10 group-hover:text-brand-rose transition-colors mb-8">
-                                <feature.icon size={24} strokeWidth={1.5} />
+                                <feature.icon size={22} strokeWidth={1.5} />
                             </div>
-                            <h3 className="text-xl font-display font-medium text-brand-charcoal mb-4">
+                            <h3 className="text-xl md:text-2xl font-display font-medium text-brand-charcoal mb-6">
                                 {feature.title}
                             </h3>
-                            <p className="text-base font-sans font-light text-brand-gray leading-relaxed">
+                            <p className="text-lg font-sans font-light text-brand-gray leading-relaxed">
                                 {feature.content}
                             </p>
                         </motion.div>

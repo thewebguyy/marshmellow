@@ -6,7 +6,7 @@
   --color-brand-charcoal: #121212;
   --color-brand-gray: #6B6B6B;
   --color-brand-mauve: #7D5C65;
-  
+
   --font-serif: var(--font-serif);
   --font-sans: var(--font-inter);
   --font-display: var(--font-outfit);
@@ -27,7 +27,20 @@
 }
 
 .rose-glow {
-  background: radial-gradient(circle at center, rgba(212, 141, 129, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(212, 141, 129, 0.08) 0%, transparent 80%);
+}
+
+/* Gradient bleeds at section boundaries */
+.section-bleed-ivory-white {
+  background: linear-gradient(180deg, var(--color-brand-ivory) 0%, #FFFFFF 100%);
+}
+
+.section-bleed-white-charcoal {
+  background: linear-gradient(180deg, #FFFFFF 0%, #1A1A1A 100%);
+}
+
+.section-bleed-charcoal-ivory {
+  background: linear-gradient(180deg, #121212 0%, var(--color-brand-ivory) 100%);
 }
 
 body {
@@ -35,13 +48,32 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  /* Improved line height for body copy */
 }
 
-h1, h2, h3, h4 {
+@media (max-width: 768px) {
+  body {
+    line-height: 1.7;
+    /* Extra breathing room on mobile */
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
+  /* Tighter letter spacing for display headings */
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+.text-editorial {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }

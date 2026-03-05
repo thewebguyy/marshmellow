@@ -18,16 +18,19 @@ export function Navbar() {
                 </span>
             </Link>
 
-            <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-charcoal/70">
-                <Link href="#problem" className="hover:text-brand-charcoal transition-colors">The Problem</Link>
-                <Link href="#solution" className="hover:text-brand-charcoal transition-colors">The Solution</Link>
-                <Link href="#features" className="hover:text-brand-charcoal transition-colors">Features</Link>
-                <Link href="#verification" className="hover:text-brand-charcoal transition-colors">Verification</Link>
+            <div className="hidden md:flex items-center space-x-10 text-sm font-medium text-brand-charcoal/60 tracking-wide uppercase">
+                <Link href="#problem" className="hover:text-brand-charcoal transition-colors">The Reality</Link>
+                <Link href="#solution" className="hover:text-brand-charcoal transition-colors">The Approach</Link>
+                <Link href="#features" className="hover:text-brand-charcoal transition-colors">The Platform</Link>
+                <Link href="#verification" className="hover:text-brand-charcoal transition-colors">The Trust</Link>
             </div>
 
-            <Button variant="outline" size="sm" className="hidden sm:inline-flex">
-                Apply for Access
-            </Button>
+            <div className="flex items-center space-x-4">
+                <Button variant="outline" size="sm" className="hidden sm:inline-flex border-brand-charcoal/20">
+                    Apply for Access
+                </Button>
+                {/* Mobile Burger/Menu could go here, but per audit, we might want a floating bar instead */}
+            </div>
         </motion.nav>
     );
 }

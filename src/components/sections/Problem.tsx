@@ -23,39 +23,45 @@ const TRUTHS = [
 
 export function Problem() {
     return (
-        <section id="problem" className="py-32 px-6 bg-white overflow-hidden">
-            <div className="max-w-4xl mx-auto">
+        <section id="problem" className="relative py-48 px-6 bg-brand-ivory overflow-hidden">
+            {/* Subtle Texture/Luminosity Shift */}
+            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.15]" />
+
+            <div className="relative z-10 max-w-5xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-32"
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-48"
                 >
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium leading-tight text-brand-charcoal mb-8">
+                    <span className="text-xs uppercase tracking-[0.4em] font-semibold text-brand-rose/60 block mb-12">The Reality</span>
+                    <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[0.95] tracking-tight text-brand-charcoal mb-12 max-w-4xl">
                         The problem was never that you were too busy to find someone.
                     </h2>
-                    <div className="h-[1px] w-24 bg-brand-rose/30 mb-8" />
-                    <p className="text-3xl md:text-4xl font-display text-brand-gray/80 leading-snug italic">
+                    <p className="text-3xl md:text-5xl font-serif text-brand-gray/90 leading-tight italic max-w-3xl">
                         &ldquo;The problem is that every app you tried was built for someone else&apos;s life.&rdquo;
                     </p>
                 </motion.div>
 
-                <div className="space-y-24 md:space-y-32">
+                <div className="space-y-48 md:space-y-64">
                     {TRUTHS.map((truth, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            className={`flex flex-col ${index % 2 === 0 ? "items-start text-left" : "items-end text-right md:text-left md:items-start"}`}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 * index }}
+                            className="flex flex-col items-start text-left"
                         >
-                            <div className="max-w-2xl">
-                                <h3 className="text-sm uppercase tracking-widest font-bold text-brand-rose mb-4">
+                            <div className="text-editorial">
+                                <span className="inline-block px-3 py-1 bg-brand-rose/5 border border-brand-rose/10 rounded-full text-[10px] uppercase tracking-widest font-bold text-brand-rose mb-8">
+                                    0{index + 1} — {truth.title}
+                                </span>
+                                <h3 className="text-3xl md:text-4xl font-display font-medium text-brand-charcoal mb-8 leading-tight">
                                     {truth.title}
                                 </h3>
-                                <p className="text-xl md:text-2xl font-sans font-light leading-relaxed text-brand-charcoal">
+                                <p className="text-xl md:text-2xl font-sans font-light leading-relaxed text-brand-charcoal/80">
                                     {truth.content}
                                 </p>
                             </div>
@@ -63,18 +69,36 @@ export function Problem() {
                     ))}
                 </div>
 
+                {/* The Emotional Peak - Isolated and Scaled */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="mt-32 pt-20 border-t border-brand-charcoal/5 text-center"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 2 }}
+                    className="mt-64 pt-32 text-left"
                 >
-                    <p className="text-2xl md:text-3xl font-display font-normal text-brand-charcoal max-w-3xl mx-auto leading-relaxed">
-                        Marshmellow was built on a different premise entirely. That the right person — for someone with your life — isn&apos;t the person who tolerates it. <span className="text-brand-rose">It&apos;s the person who already understands it.</span>
-                    </p>
+                    <div className="max-w-4xl">
+                        <p className="text-3xl md:text-5xl lg:text-6xl font-display font-normal text-brand-charcoal leading-[1.1] tracking-tight">
+                            Marshmellow was built on a different premise entirely. That the right person — for someone with your life — isn&apos;t the person who <span className="italic font-serif opacity-60">tolerates</span> it.
+                        </p>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1.5, delay: 0.8 }}
+                            className="mt-12 overflow-hidden"
+                        >
+                            <span className="block text-4xl md:text-7xl lg:text-8xl font-display font-medium text-brand-rose leading-[0.9] tracking-tight py-4 border-l-4 border-brand-rose/30 pl-8 md:pl-12">
+                                It&apos;s the person who <br className="hidden md:block" />
+                                already understands it.
+                            </span>
+                        </motion.div>
+                    </div>
                 </motion.div>
             </div>
+
+            {/* Symmetry Break - Offset Divider */}
+            <div className="absolute right-0 top-1/2 w-32 h-[1px] bg-brand-rose/20 -translate-y-1/2 hidden xl:block" />
         </section>
     );
 }

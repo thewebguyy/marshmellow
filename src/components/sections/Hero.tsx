@@ -6,82 +6,92 @@ import { Button } from "../ui/Button";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 hero-gradient overflow-hidden">
-            {/* Subtle Rose Glow */}
+        <section className="relative min-h-screen flex flex-col justify-center px-6 pt-32 pb-20 hero-gradient overflow-hidden">
+            {/* Amplified Rose Glow */}
+            <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-brand-rose/15 blur-[120px] rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none z-0" />
             <div className="absolute inset-0 rose-glow pointer-events-none" />
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                    className="max-w-5xl"
-                >
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.05] tracking-tight text-brand-charcoal text-balance">
-                        You&apos;ve never had to explain your life to a patient. You shouldn&apos;t have to explain it to a partner.
-                    </h1>
-                </motion.div>
+            <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                {/* Text Content - Left Aligned on Desktop */}
+                <div className="lg:col-span-7 flex flex-col items-start text-left">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                        className="w-full"
+                    >
+                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[10rem] font-display font-medium leading-[0.9] tracking-[-0.05em] text-brand-charcoal">
+                            Stop explaining. <br />
+                            <span className="text-brand-rose italic font-serif text-[0.85em] tracking-tight block mt-4">Start being understood.</span>
+                        </h1>
+                    </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-                    className="mt-8 max-w-2xl"
-                >
-                    <p className="text-xl md:text-2xl text-brand-gray font-sans font-normal leading-relaxed text-balance">
-                        Marshmellow is a private, verified network for medical professionals who are ready to stop being a mystery to the person they come home to.
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                    className="mt-12 flex flex-col items-center space-y-4"
-                >
-                    <Button size="xl" className="shadow-lg shadow-brand-rose/20">
-                        Apply for Early Access
-                    </Button>
-                    <div className="flex flex-col items-center space-y-1">
-                        <p className="text-sm font-light text-brand-charcoal/60">
-                            Every member is credentialed and verified.
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                        className="mt-10 max-w-xl"
+                    >
+                        <p className="text-xl md:text-2xl text-brand-gray font-sans font-normal leading-relaxed">
+                            A private, verified network for medical professionals who are ready to stop being a mystery to the person they come home to.
                         </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                        className="mt-14 flex flex-col items-start space-y-4"
+                    >
+                        <Button size="xl" className="shadow-2xl shadow-brand-rose/25">
+                            Apply for Early Access
+                        </Button>
+                        <p className="text-xs font-medium uppercase tracking-widest text-brand-charcoal/40 pl-2">
+                            Credentialed & Verified Only
+                        </p>
+                    </motion.div>
+                </div>
+
+                {/* Imagery - Right Aligned on Desktop */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+                    className="lg:col-span-5 relative"
+                >
+                    <div className="relative z-10 w-full max-w-md mx-auto transform hover:rotate-2 transition-transform duration-700">
+                        <div className="absolute -inset-4 bg-brand-rose/5 blur-2xl rounded-[3rem] pointer-events-none" />
+                        <Image
+                            src="/images/mockup.png"
+                            alt="Marshmellow App Mockup"
+                            width={800}
+                            height={1200}
+                            priority
+                            className="relative z-10 w-full h-auto drop-shadow-[0_32px_64px_rgba(0,0,0,0.15)] rounded-[2.5rem]"
+                        />
                     </div>
-                </motion.div>
-
-                {/* Mockup Image */}
-                <motion.div
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 1 }}
-                    className="mt-20 relative w-full max-w-lg mx-auto"
-                >
-                    <div className="absolute inset-0 bg-brand-rose/10 blur-3xl rounded-full scale-110 pointer-events-none" />
-                    <Image
-                        src="/images/mockup.png"
-                        alt="Marshmellow App Mockup"
-                        width={800}
-                        height={1200}
-                        priority
-                        className="relative z-10 w-full h-auto drop-shadow-2xl"
-                    />
-                </motion.div>
-
-                {/* Proof Line */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 2, delay: 1.8 }}
-                    className="mt-20 pt-10 border-t border-brand-charcoal/5 w-full flex justify-center"
-                >
-                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-brand-gray/50 text-center max-w-2xl">
-                        Trusted by verified physicians, surgeons, residents, and nurses across New York, London, Toronto, Chicago, and Boston.
-                    </p>
                 </motion.div>
             </div>
 
-            {/* Visual Element - Suggestion of depth */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[30%] bg-white/30 blur-3xl -rotate-1 transform-gpu pointer-events-none" />
+            {/* Proof Line - Elegant Footer of Hero */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2, delay: 1.5 }}
+                className="relative z-10 mt-24 lg:mt-32 pt-12 border-t border-brand-charcoal/10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0"
+            >
+                <p className="text-xs uppercase tracking-[0.3em] font-medium text-brand-charcoal/40 leading-relaxed max-w-lg">
+                    Current Verified Presence: New York, London, Toronto, Chicago, Berlin, and San Francisco.
+                </p>
+                <div className="flex space-x-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span className="font-display font-bold text-lg tracking-tighter">NYPH</span>
+                    <span className="font-display font-bold text-lg tracking-tighter">UHN</span>
+                    <span className="font-display font-bold text-lg tracking-tighter">BWH</span>
+                </div>
+            </motion.div>
+
+            {/* Symmetry Break - Subtle Floating Element */}
+            <div className="absolute top-1/4 left-10 w-12 h-px bg-brand-rose/20 hidden xl:block" />
         </section>
     );
 }
