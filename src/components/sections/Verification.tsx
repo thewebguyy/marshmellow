@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShieldCheck, FileCheck, Lock } from "lucide-react";
 
@@ -11,11 +12,31 @@ export function Verification() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-32"
+                    className="mb-32 flex flex-col md:flex-row items-center gap-16"
                 >
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium leading-tight max-w-4xl">
-                        In medicine, trust is not assumed. It is verified. We operate the same way.
-                    </h2>
+                    <div className="flex-1">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium leading-tight mb-8">
+                            In medicine, trust is not assumed. It is verified.
+                        </h2>
+                        <p className="text-xl text-white/60 font-sans font-light leading-relaxed">
+                            We operate with the same rigor you apply to your practice. Every member, every credential, every specialty is confirmed before they see a single profile.
+                        </p>
+                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="flex-1 relative"
+                    >
+                        <div className="absolute inset-0 bg-brand-rose/20 blur-3xl rounded-full" />
+                        <Image
+                            src="/images/verification.png"
+                            alt="Professional Verification"
+                            width={600}
+                            height={400}
+                            className="relative z-10 rounded-2xl shadow-2xl border border-white/10"
+                        />
+                    </motion.div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 mb-32">
@@ -72,8 +93,8 @@ export function Verification() {
                     transition={{ duration: 1 }}
                     className="relative py-24 px-8 md:px-16 rounded-[40px] border border-white/10 bg-white/5 flex flex-col items-center text-center backdrop-blur-sm shadow-2xl"
                 >
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-brand-rose flex items-center justify-center shadow-lg shadow-brand-rose/20">
-                        <Lock size={24} className="text-white" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-brand-rose flex items-center justify-center shadow-lg shadow-brand-rose/20 text-white">
+                        <Lock size={24} />
                     </div>
                     <p className="text-2xl md:text-4xl font-display font-light text-white max-w-4xl italic leading-relaxed">
                         &ldquo;We have declined every request to share, sell, or monetize member verification data. We will continue to decline every such request.&rdquo;

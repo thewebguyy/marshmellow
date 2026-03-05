@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-12 hero-gradient overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-20 hero-gradient overflow-hidden">
             {/* Subtle Rose Glow */}
             <div className="absolute inset-0 rose-glow pointer-events-none" />
 
@@ -36,17 +37,6 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-                    className="mt-10 max-w-xl"
-                >
-                    <p className="text-base text-brand-gray/80 italic font-normal leading-relaxed">
-                        Most of your colleagues have quietly given up on mainstream dating apps. Not because they stopped wanting connection. Because the apps stopped making sense for the life they actually live.
-                    </p>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
                     className="mt-12 flex flex-col items-center space-y-4"
                 >
                     <Button size="xl" className="shadow-lg shadow-brand-rose/20">
@@ -56,20 +46,35 @@ export function Hero() {
                         <p className="text-sm font-light text-brand-charcoal/60">
                             Every member is credentialed and verified.
                         </p>
-                        <p className="text-sm font-light text-brand-charcoal/60">
-                            Your profile is never visible to colleagues unless you choose otherwise.
-                        </p>
                     </div>
+                </motion.div>
+
+                {/* Mockup Image */}
+                <motion.div
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 1 }}
+                    className="mt-20 relative w-full max-w-lg mx-auto"
+                >
+                    <div className="absolute inset-0 bg-brand-rose/10 blur-3xl rounded-full scale-110 pointer-events-none" />
+                    <Image
+                        src="/images/mockup.png"
+                        alt="Marshmellow App Mockup"
+                        width={800}
+                        height={1200}
+                        priority
+                        className="relative z-10 w-full h-auto drop-shadow-2xl"
+                    />
                 </motion.div>
 
                 {/* Proof Line */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 2, delay: 1.5 }}
+                    transition={{ duration: 2, delay: 1.8 }}
                     className="mt-20 pt-10 border-t border-brand-charcoal/5 w-full flex justify-center"
                 >
-                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-brand-gray/50">
+                    <p className="text-xs uppercase tracking-[0.2em] font-medium text-brand-gray/50 text-center max-w-2xl">
                         Trusted by verified physicians, surgeons, residents, and nurses across New York, London, Toronto, Chicago, and Boston.
                     </p>
                 </motion.div>
