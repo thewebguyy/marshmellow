@@ -23,42 +23,55 @@ const PILLARS = [
 
 export function Solution() {
     return (
-        <section id="solution" className="py-32 px-6 bg-[#FAF9F6]">
-            <div className="max-w-6xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-24"
-                >
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-brand-charcoal max-w-4xl mx-auto leading-tight">
-                        Everything about this platform begins with one assumption: your time is the scarcest resource you have. We treat it accordingly.
-                    </h2>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-24">
-                    {PILLARS.map((pillar, index) => (
+        <section id="solution" className="py-48 px-6 bg-brand-ivory section-bleed-ivory-white relative overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div className="lg:col-span-5">
                         <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.2 }}
-                            className="flex flex-col items-start"
+                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-brand-rose/10 flex items-center justify-center text-brand-rose mb-8">
-                                <pillar.icon size={24} strokeWidth={1.5} />
-                            </div>
-                            <h3 className="text-xl md:text-2xl font-display font-medium text-brand-charcoal mb-6 leading-tight">
-                                {pillar.title}
-                            </h3>
-                            <p className="text-lg font-sans font-light text-brand-gray leading-relaxed">
-                                {pillar.content}
-                            </p>
+                            <span className="text-xs uppercase tracking-[0.4em] font-semibold text-brand-rose/60 block mb-10">The Approach</span>
+                            <h2 className="text-5xl md:text-7xl font-display font-medium text-brand-charcoal mb-10 leading-[0.95] tracking-tight">
+                                Your time is the scarcest resource. <br className="hidden md:block" />
+                                <span className="opacity-30">We treat it accordingly.</span>
+                            </h2>
                         </motion.div>
-                    ))}
+                    </div>
+
+                    <div className="lg:col-span-7 pt-4">
+                        <div className="space-y-16 md:space-y-24">
+                            {PILLARS.map((pillar, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: index * 0.2 }}
+                                    className="flex flex-col md:flex-row items-start gap-8"
+                                >
+                                    <div className="w-16 h-16 shrink-0 rounded-[2rem] bg-brand-charcoal/5 flex items-center justify-center text-brand-rose border border-brand-rose/10">
+                                        <pillar.icon size={28} strokeWidth={1} />
+                                    </div>
+                                    <div className="max-w-2xl">
+                                        <h3 className="text-2xl md:text-3xl font-display font-medium text-brand-charcoal mb-6 leading-tight">
+                                            {pillar.title}
+                                        </h3>
+                                        <p className="text-xl font-sans font-light text-brand-gray leading-relaxed opacity-80">
+                                            {pillar.content}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {/* Symmetry Break - Left Edge Accent */}
+            <div className="absolute top-1/2 left-0 w-24 h-px bg-brand-rose/10 hidden xl:block" />
         </section>
     );
 }
